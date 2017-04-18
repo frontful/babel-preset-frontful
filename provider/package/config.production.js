@@ -7,10 +7,11 @@ module.exports = function provider(options) {
 
   return {
     babelrc: false,
-    ignore: new RegExp(`node_modules/(?!(frontful-.*)/).*`, 'i'),
+    ignore: new RegExp(`node_modules/(?!(babel-preset-frontful|(frontful-.*))/).*`, 'i'),
     presets: [
       ['babel-preset-env', {
         targets: {
+          browsers: 'last 2 versions',
           node: 6,
         },
         modules: 'commonjs',

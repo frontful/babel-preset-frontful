@@ -1,6 +1,6 @@
 const resolve = require('../../utils/resolve')
 
-module.exports = function developmentConfig(options) {
+module.exports = function provider(options) {
   options = Object.assign({
     debug: false,
   }, options)

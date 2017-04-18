@@ -7,4 +7,8 @@ module.exports = {
     options: null,
     config: null,
   },
+  package: {
+    options: null,
+    config: null,
+  },
 }
