@@ -1,3 +1,4 @@
+const commonConfig = require('frontful-common/config')
 const resolve = require('../../utils/resolve')
 
 module.exports = function provider(options) {
@@ -7,7 +8,7 @@ module.exports = function provider(options) {
 
   return {
     babelrc: false,
-    ignore: new RegExp(`node_modules/(?!(frontful-.*)/).*`, 'i'),
+    ignore: new RegExp(`node_modules/(?!(${commonConfig.packages.join('|')}))`),
     presets: [
       ['babel-preset-env', {
         targets: {
