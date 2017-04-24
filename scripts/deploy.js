@@ -1,4 +1,5 @@
 import PackageJSON from './utils/PackageJSON'
+import chalk from 'chalk'
 import deploy from './utils/deploy'
 import path from 'path'
 
@@ -9,4 +10,6 @@ require('./build')
 
 deploy(targetPath)
 
-new PackageJSON(sourcePath).bump()
+const version = new PackageJSON(sourcePath).bump()
+
+console.log(chalk.green.bold(`Package deployed as version ${version}`))

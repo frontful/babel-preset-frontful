@@ -5,6 +5,7 @@ const objectPath = require('object-path')
 const customConfig = objectPath(providerPackage('frontful.babel') || {})
 
 const mergedConfig = {
+  ignore: customConfig.get('ignore'),
   server: (
     customConfig.get('server.config') ||
     require('../provider/server')(

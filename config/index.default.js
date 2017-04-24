@@ -1,4 +1,5 @@
 module.exports = {
+  ignore: null,
   server: {
     options: null,
     config: null,
