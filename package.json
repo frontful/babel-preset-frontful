@@ -1,6 +1,6 @@
 {
   "name": "babel-preset-frontful",
-  "version": "0.0.22",
+  "version": "0.0.30",
   "private": true,
   "description": "Babel preset provider and package deployment utilities",
   "license": "MIT",

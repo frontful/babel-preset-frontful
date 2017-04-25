@@ -10,7 +10,7 @@ fs.removeSync(targetPath)
 
 fs.copySync(sourcePath, targetPath, {
   filter: (filename) => {
-    return new RegExp(`^((?!(/(node_modules|build)(/|$))).)*$`, 'i').test(filename)
+    return /^((?!(\/(node_modules|build)(\/|$))).)*$/i.test(filename)
   }
 })
 
