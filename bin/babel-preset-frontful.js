@@ -1,4 +1,6 @@
 #!/usr/bin/env node
+process.env.NODE_ENV = 'production'
+
 require('babel-register')(require('../config/package'))
 
 const command = process.argv[2]
