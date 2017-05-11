@@ -15,6 +15,9 @@ module.exports = function provider(options) {
           browsers: 'last 2 versions',
           node: 6,
         },
+        include: [
+          'transform-es2015-classes'
+        ],
         modules: 'commonjs',
         loose: false,
         useBuiltIns: false,

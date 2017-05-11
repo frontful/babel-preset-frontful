@@ -14,6 +14,9 @@ module.exports = function provider(options) {
         targets: {
           node: 6,
         },
+        include: [
+          'transform-es2015-classes'
+        ],
         modules: 'commonjs',
         loose: false,
         useBuiltIns: false,
