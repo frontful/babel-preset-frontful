@@ -9,22 +9,19 @@ const mergedConfig = {
   server: (
     customConfig.get('server.config') ||
     require('../provider/server')(
-      customConfig.get('server.options') ||
-      defaultConfig.server.options
+      Object.assign({}, defaultConfig.server.options, customConfig.get('server.options'))
     )
   ),
   browser: (
     customConfig.get('browser.config') ||
     require('../provider/browser')(
-      customConfig.get('browser.options') ||
-      defaultConfig.browser.options
+      Object.assign({}, defaultConfig.browser.options, customConfig.get('browser.options'))
     )
   ),
   package: (
     customConfig.get('package.config') ||
     require('../provider/package')(
-      customConfig.get('package.options') ||
-      defaultConfig.package.options
+      Object.assign({}, defaultConfig.package.options, customConfig.get('package.options'))
     )
   ),
 }
