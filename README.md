@@ -39,9 +39,7 @@ npm run build
 
 ##### Deploy
 ```shell
-# Using yarn
-yarn deploy
-# or npm
+# Using npm
 npm run deploy
 ```
 `babel-preset-frontful deploy` script builds package using `babel-preset-frontful build` and deploys `/build` folder content to [Npm registry](https://www.npmjs.com/).  

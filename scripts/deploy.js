@@ -4,11 +4,11 @@ import deploy from './utils/deploy'
 import Hash from './utils/Hash'
 import path from 'path'
 
-const hash = new Hash()
+require('./build')
+
+const hash = new Hash('build')
 
 if (hash.changed()) {
-  require('./build')
-
   const sourcePath = process.cwd()
   const targetPath = path.resolve(sourcePath, 'build')
 
