@@ -1,6 +1,6 @@
 {
   "name": "babel-preset-frontful",
-  "version": "3.0.2",
+  "version": "3.0.17",
   "private": true,
   "description": "Babel preset provider and package deployment utilities",
   "license": "MIT",
@@ -17,6 +17,9 @@
     "deploy": "yarn test && node ./bin/babel-preset-frontful.js deploy",
     "test": "yarn test:eslint",
     "test:eslint": "node ./node_modules/eslint/bin/eslint.js --max-warnings 0 ."
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
   },
   "dependencies": {
     "babel-plugin-add-module-exports": "^0.2.1",

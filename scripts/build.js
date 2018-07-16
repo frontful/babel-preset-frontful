@@ -4,26 +4,48 @@ import path from 'path'
 import tmp from 'tmp'
 import transpile from './utils/transpile'
 
-const temp = tmp.dirSync({
-  unsafeCleanup: true,
-})
+export default function run(options) {
+  options = Object.assign({
+    transpile: true,
+    folder: null,
+    root: '.',
+  }, options)
 
-const sourcePath = process.cwd()
-const tempPath = temp.name
-const targetPath = path.resolve(sourcePath, 'build')
+  let packages = [options.root]
+  const packagesPath = path.resolve(process.cwd(), options.folder || '.')
 
-fs.removeSync(targetPath)
+  if (options.folder) {
+    packages = fs.readdirSync(packagesPath).filter(function(file) {
+      return fs.statSync(path.join(packagesPath, file)).isDirectory()
+    })
+  }
 
-fs.copySync(sourcePath, tempPath, {
-  filter: (filename) => {
-    return /^((?!(\/(node_modules|build)(\/|$))).)*$/i.test(filename)
-  },
-})
+  packages.forEach(function(pkg) {
+    const sourcePath = path.resolve(packagesPath, pkg)
 
-fs.copySync(tempPath, targetPath)
+    const temp = tmp.dirSync({
+      unsafeCleanup: true,
+    })
 
-temp.removeCallback()
+    const tempPath = temp.name
+    const targetPath = path.resolve(sourcePath, 'build')
 
-transpile(targetPath)
+    fs.removeSync(targetPath)
 
-console.log(chalk.green.bold('Package built'))
+    fs.copySync(sourcePath, tempPath, {
+      filter: (filename) => {
+        return /^((?!(\/(node_modules|build)(\/|$))).)*$/i.test(filename)
+      },
+    })
+
+    fs.copySync(tempPath, targetPath)
+
+    temp.removeCallback()
+
+    if (options.transpile) {
+      transpile(targetPath)
+    }
+
+    console.log(chalk.green.bold(`Package built (${pkg})`))
+  })
+}

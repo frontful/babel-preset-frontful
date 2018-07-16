@@ -9,7 +9,8 @@ export default function deploy(sourcePath) {
 
   const result = execSync(`npm publish "${sourcePath}"`, {
     cwd: sourcePath,
-    encoding: 'utf8'
+    encoding: 'utf8',
+    stdio: 'inherit'
   })
 
   packageJSON.lock()
