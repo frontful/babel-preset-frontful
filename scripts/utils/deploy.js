@@ -8,7 +8,7 @@ export default function deploy(sourcePath) {
   packageJSON.bump()
 
   const result = execSync(`npm publish "${sourcePath}"`, {
-    cwd: sourcePath,
+    cwd: process.cwd(),
     encoding: 'utf8',
     stdio: 'inherit'
   })
